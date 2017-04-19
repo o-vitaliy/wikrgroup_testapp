@@ -1,10 +1,12 @@
 package com.wikrgroup.testapp.models;
 
+import java.io.Serializable;
+
 /**
  * Created by ovitaliy on 19.04.2017.
  */
 
-public class Address {
+public class Address  implements Serializable {
 
     private String street;
     private String suite;

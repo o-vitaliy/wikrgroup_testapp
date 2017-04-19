@@ -38,6 +38,7 @@ dependencies {
     // support libs
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
 
     //guava
     compile "com.google.guava:guava:$rootProject.guavaVersion"

@@ -3,6 +3,7 @@ package com.wikrgroup.testapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.wikrgroup.testapp.models.User;
 import com.wikrgroup.testapp.users.list.UsersListFragment;
 
 public class MainActivity extends AppCompatActivity implements UsersListFragment.OnUserSelectListener {
@@ -17,13 +18,12 @@ public class MainActivity extends AppCompatActivity implements UsersListFragment
             UsersListFragment usersListFragment = new UsersListFragment();
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.mainContainer, usersListFragment, tag)
-                    .addToBackStack(tag)
                     .commit();
         }
     }
 
     @Override
-    public void onUserSelected(Long userId) {
-
+    public void onUserSelected(User user) {
+        System.out.println(user);
     }
 }

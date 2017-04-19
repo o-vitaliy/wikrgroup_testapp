@@ -1,10 +1,12 @@
 package com.wikrgroup.testapp.models;
 
+import java.io.Serializable;
+
 /**
  * Created by ovitaliy on 19.04.2017.
  */
 
-public class User {
+public class User  implements Serializable{
     private Long id;
     private String username;
     private String name;
