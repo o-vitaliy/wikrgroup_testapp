@@ -27,16 +27,22 @@ class UsersListPresenter extends UsersListContract.Presenter {
 
     private TreeSet<Integer> pagesInProgress = new TreeSet<>();
 
+    private boolean loaded;
+
     @Inject
     UsersListPresenter(UsersListContract.View view, UsersRepository usersRepository) {
         this.view = view;
         this.usersRepository = usersRepository;
     }
 
+
     @Override
     void load() {
-        load(0);
-        load(LIMIT);
+        if (!loaded) {
+            load(0);
+            load(LIMIT);
+            loaded = true;
+        }
     }
 
     private void load(int start) {
