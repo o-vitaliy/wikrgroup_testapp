@@ -1,7 +1,7 @@
 package com.wikrgroup.testapp.models.dataSources;
 
 import com.wikrgroup.testapp.di.modules.AppModule;
-import com.wikrgroup.testapp.di.modules.DataSourceModule;
+import com.wikrgroup.testapp.di.modules.RestApiModule;
 
 import javax.inject.Singleton;
 
@@ -15,7 +15,7 @@ import dagger.Component;
         modules = {
                 UsersRepositoryModule.class,
                 AppModule.class,
-                DataSourceModule.class
+                RestApiModule.class
         })
 public interface UsersRepositoryComponent {
 

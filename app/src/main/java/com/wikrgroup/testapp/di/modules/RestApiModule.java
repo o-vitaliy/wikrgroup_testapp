@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by ovitaliy on 19.04.2017.
  */
 @Module
-public class DataSourceModule {
+public class RestApiModule {
 
     /**
      * 50MB cache size.

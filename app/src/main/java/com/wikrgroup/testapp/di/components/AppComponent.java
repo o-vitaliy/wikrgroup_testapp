@@ -3,7 +3,7 @@ package com.wikrgroup.testapp.di.components;
 import android.content.Context;
 
 import com.wikrgroup.testapp.di.modules.AppModule;
-import com.wikrgroup.testapp.di.modules.DataSourceModule;
+import com.wikrgroup.testapp.di.modules.RestApiModule;
 
 import javax.inject.Singleton;
 
@@ -15,9 +15,9 @@ import dagger.Component;
 @Singleton
 @Component(modules = {
         AppModule.class,
-        DataSourceModule.class
+        RestApiModule.class
 })
-public interface AppComponent extends DataSourceComponent {
+public interface AppComponent extends RestApiComponent {
 
     Context context();
 
