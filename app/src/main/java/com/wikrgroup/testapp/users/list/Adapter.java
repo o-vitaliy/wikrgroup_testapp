@@ -79,7 +79,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         public void setData(User user) {
             itemView.setTag(user);
-            userIdView.setText(String.valueOf(user.hashCode()));
+            userIdView.setText(String.valueOf(user.getId()));
             userNameView.setText(user.getName());
             userEmailView.setText(user.getEmail());
         }
