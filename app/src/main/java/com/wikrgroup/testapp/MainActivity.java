@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.wikrgroup.testapp.models.User;
 import com.wikrgroup.testapp.users.list.UsersListFragment;
+import com.wikrgroup.testapp.users.view.UserFragment;
 
 public class MainActivity extends AppCompatActivity implements UsersListFragment.OnUserSelectListener {
 
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity implements UsersListFragment
 
     @Override
     public void onUserSelected(User user) {
-        System.out.println(user);
+        final String tag = "viewUser";
+        UserFragment usersListFragment = UserFragment.newInstance(user);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.mainContainer, usersListFragment, tag)
+                .addToBackStack(tag)
+                .commit();
     }
 }
