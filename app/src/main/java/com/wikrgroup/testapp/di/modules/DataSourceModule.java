@@ -3,6 +3,7 @@ package com.wikrgroup.testapp.di.modules;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.wikrgroup.testapp.BuildConfig;
 
 import java.io.File;
 
@@ -33,12 +34,13 @@ public class DataSourceModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit(Context context) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-        builder.addInterceptor(interceptor);
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(interceptor);
+        }
 
         File cacheDir = new File(context.getCacheDir(), "cached");
         Cache cache = new Cache(cacheDir, DISK_CACHE_SIZE);
