@@ -19,11 +19,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     lintOptions {
         abortOnError false
     }
 }
+retrolambda {
+    incremental true
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -31,7 +38,6 @@ dependencies {
     // support libs
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
 
     //guava
     compile "com.google.guava:guava:$rootProject.guavaVersion"
@@ -43,7 +49,6 @@ dependencies {
     // dagger
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
-    provided 'javax.annotation:jsr250-api:1.0'
 
     // retrofit & http
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
@@ -52,11 +57,17 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
     compile "com.squareup.okhttp3:okhttp-urlconnection:$rootProject.ext.okhttpVersion"
 
-
     // junit
     testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoCoreVersion"
+    testCompile "org.powermock:powermock:$rootProject.ext.powerMockVersion"
+    testCompile "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockVersion"
+    testCompile "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockVersion"
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+    compile 'com.android.support:support-v4:25.3.0'
+    provided 'javax.annotation:jsr250-api:1.0'
 }
