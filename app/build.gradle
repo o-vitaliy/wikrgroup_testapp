@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -21,10 +23,36 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+
+    // support libs
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+
+    //guava
+    compile "com.google.guava:guava:$rootProject.guavaVersion"
+
+    // rx
+    compile "io.reactivex:rxandroid:$rootProject.ext.rxVersion"
+    compile "io.reactivex:rxjava:$rootProject.ext.rxVersion"
+
+    // dagger
+    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    // retrofit & http
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
+    compile "com.squareup.okhttp3:okhttp-urlconnection:$rootProject.ext.okhttpVersion"
+
+
+    // junit
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
-    testCompile 'junit:junit:4.12'
 }
