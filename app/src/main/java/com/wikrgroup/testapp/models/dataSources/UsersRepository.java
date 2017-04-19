@@ -25,7 +25,7 @@ public class UsersRepository implements UsersDataSource {
     private List<User> users = new ArrayList<>();
 
     @Inject
-    public UsersRepository(@NonNull UsersDataSource remoteDataSource) {
+    UsersRepository(@NonNull UsersDataSource remoteDataSource) {
         this.remoteDataSource = checkNotNull(remoteDataSource);
     }
 
@@ -35,10 +35,4 @@ public class UsersRepository implements UsersDataSource {
                 .doOnNext(users -> this.users = users);
     }
 
-    @Override
-    public Observable<User> getUserById(@NonNull Long id) {
-        checkNotNull(id);
-        return Observable.just(users).flatMap(Observable::from)
-                .filter(user -> user.getId().equals(id));
-    }
 }

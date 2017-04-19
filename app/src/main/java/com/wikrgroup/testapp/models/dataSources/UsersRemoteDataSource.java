@@ -11,11 +11,11 @@ import rx.Observable;
  * Created by ovitaliy on 19.04.2017.
  */
 
-public class UsersRemoteDataSource implements UsersDataSource {
+class UsersRemoteDataSource implements UsersDataSource {
 
     private final UsersRestApi usersRestApi;
 
-    public UsersRemoteDataSource(UsersRestApi usersRestApi) {
+    UsersRemoteDataSource(UsersRestApi usersRestApi) {
         this.usersRestApi = usersRestApi;
     }
 
@@ -32,9 +32,5 @@ public class UsersRemoteDataSource implements UsersDataSource {
         return usersObservable.toList();
     }
 
-    @Override
-    public Observable<User> getUserById(Long id) {
-        throw new RuntimeException("Not required for the remote data source");
-    }
 
 }
